@@ -35,8 +35,8 @@ PostManager
 새롭게 생성된 user 객체는 userManager를 통해 userlist에 저장하고 관리한다.<br>
 
 post는 순서대로 글번호, 페이지번호, 작성자 id, 글 제목, 글 내용을 담은 객체이다.<br>
-postManager를 통해 생성되고 Arraylist board에 hashMap<userId, post> 형태로 저장하게 된다.<br>
+post는 postManager를 통해 생성되고 관리하며 Arraylist board에 hashMap<userId, post> 형태로 저장된다.<br>
 
 >Demo
 
-<img src = "" width = 300>
+<img src = "https://github.com/ryuuki98/board/blob/master/board/images/demo.gif" width = 300>

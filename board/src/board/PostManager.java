@@ -21,7 +21,6 @@ public class PostManager implements PostMethod {
 		posting.put(user.getId(), post);
 		board.add(posting);
 		System.out.println("글이 게시 되었습니다.");
-		System.out.println(post);
 	}
 
 	private String inputString(String message) {

@@ -94,17 +94,25 @@ public class Board {
 	}
 
 	private void runUserSubmenu(int option) {
-		if (option == JOIN) {
+		if (option == JOIN && isLogout()) {
 			userManager.join();
-		} else if (option == DELETE_USER) {
+		} else if (option == DELETE_USER && isLogin()) {
 			userManager.deleteUser();
-		} else if (option == LOGIN) {
+		} else if (option == LOGIN && isLogout()) {
 			userManager.login();
-		} else if (option == LOGOUT) {
+		} else if (option == LOGOUT && isLogin()) {
 			userManager.logout();
-		} else if (option == MODIFY_USER) {
+		} else if (option == MODIFY_USER && isLogin()) {
 			userManager.modifyUser();
 		}
+	}
+
+	private boolean isLogout() {
+		if (log != -1) {
+			System.out.println("로그아웃 후 이용하세요");
+			return false;
+		}
+		return true;
 	}
 
 	public static int inputNumber(String message) {

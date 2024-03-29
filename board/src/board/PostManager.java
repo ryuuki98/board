@@ -15,8 +15,8 @@ public class PostManager implements PostMethod {
 		String id = user.getId();
 		String title = inputString("title");
 		String text = inputString("text");
-		
-		Post post = new Post(number,id,title,text);
+
+		Post post = new Post(number, id, title, text);
 		HashMap<String, Post> posting = new HashMap<String, Post>();
 		posting.put(user.getId(), post);
 		board.add(posting);
@@ -31,8 +31,42 @@ public class PostManager implements PostMethod {
 
 	@Override
 	public void readPost() {
-		// TODO Auto-generated method stub
+		int currentPageNumber = 0;
+		while (true) {
+			System.out.println("현재 페이지 : " + currentPageNumber);
+			printPage(currentPageNumber);
+			System.out.println("이전페이지 : a , 다음페이지 : d , 종료 : q");
+			String input = inputString("index");
 
+			if (input.equals("a") && currentPageNumber > 0) {
+				currentPageNumber--;
+			} else if (input.equals("d") && currentPageNumber < board.size() / 5) {
+				currentPageNumber++;
+			} else if (input.equals("q")) {
+				break;
+			} else {
+				try {
+					int index = Integer.parseInt(input);
+					HashMap<String, Post> posting = board.get(index);
+					for (Post post : posting.values()) {
+						System.out.println(post);
+					}
+				} catch (Exception e) {
+					System.out.println("입력을 다시 확인해주세요.");
+				}
+			}
+		}
+	}
+
+	private void printPage(int currentPageNumber) {
+		for (int i = 0; i < board.size(); i++) {
+			HashMap<String, Post> posting = board.get(i);
+			for (Post post : posting.values()) {
+				if (post.getPageNumber() == currentPageNumber) {
+					System.out.println(i + ") " + post.getTitle());
+				}
+			}
+		}
 	}
 
 	@Override

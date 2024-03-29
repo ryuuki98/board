@@ -35,27 +35,26 @@ public class Board {
 		userManager = new UserManager();
 		postManager = new PostManager();
 	}
-	
+
 	public static ArrayList<User> getUserlist() {
 		return userlist;
 	}
-	
+
 	public static ArrayList<HashMap<String, Post>> getBoard() {
 		return board;
 	}
-	
+
 	public static int getLog() {
 		return log;
 	}
+
 	public static void setLog(int log) {
 		Board.log = log;
 	}
 
 	public void run() {
 		while (true) {
-			System.out.println(log);
 			printMenu();
-			
 			int select = inputNumber("menu");
 			runMenu(select);
 		}

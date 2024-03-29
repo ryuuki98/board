@@ -14,7 +14,21 @@ public class Post {
 		this.id = id;
 		this.title = title;
 		this.text = text;
-		this.pageNumber = number/5;
+		this.pageNumber = number == 0 ? 0 : number/5;
+	}
+	
+	public int getNumber() {
+		return number;
+	}
+	public int getPageNumber() {
+		return pageNumber;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	public String getText() {
+		return text;
 	}
 	
 	@Override

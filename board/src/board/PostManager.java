@@ -71,14 +71,40 @@ public class PostManager implements PostMethod {
 
 	@Override
 	public void modifyPost(User user) {
-		// TODO Auto-generated method stub
+		printUserPostAll(user);
 
+		int index = Board.inputNumber("index");
+		HashMap<String, Post> posting = board.get(index);
+		Post post = posting.get(user.getId());
+		post.setText(inputString("text"));
+		System.out.println(post);
+		System.out.println("수정이 완료 되었습니다.");
+	}
+
+	private void printUserPostAll(User user) {
+		for (int i = 0; i < board.size(); i++) {
+			HashMap<String, Post> posting = board.get(i);
+			Post post = posting.get(user.getId());
+			if (post != null) {
+				System.out.println(i + ") " + post.getTitle());
+			}
+		}
 	}
 
 	@Override
 	public void deletePost(User user) {
-		// TODO Auto-generated method stub
+		printUserPostAll(user);
+		int index = Board.inputNumber("index");
+		board.remove(index);
+		updateNumber();
+		System.out.println("삭제가 완료 되었습니다.");
+	}
 
+	private void updateNumber() {
+		for (int i = 0; i < board.size(); i++) {
+			for (Post post : board.get(i).values())
+				post.setNumber(i);
+		}
 	}
 
 }

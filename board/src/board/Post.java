@@ -31,6 +31,14 @@ public class Post {
 		return text;
 	}
 	
+	public void setNumber(int number) {
+		this.number = number;
+		this.pageNumber = number == 0 ? 0 : number/5;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	
 	@Override
 	public String toString() {
 		String data = String.format("[%d] %s \n", this.number, this.title);

@@ -46,7 +46,15 @@ public class UserManager implements UserMethod{
 
 	@Override
 	public void deleteUser() {
-		
+		User user = userlist.get(Board.getLog());
+		String password = inputString("password");
+		if (isValid(user, password)) {
+			userlist.remove(user);
+			Board.setLog(-1);
+			System.out.println("탈퇴가 완료 되었습니다.");
+		}else {
+			System.out.println("비밀번호를 확인해주세요.");
+		}
 	}
 
 	@Override

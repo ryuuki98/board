@@ -51,18 +51,45 @@ public class UserManager implements UserMethod{
 
 	@Override
 	public void login() {
-		// TODO Auto-generated method stub
-		
+		String id = inputString("id");
+		User user = findUserById(id);
+		if (user == null) {
+			System.out.println("아이디가 없습니다.");
+			return;
+		}
+		String password = inputString("password");
+		if (isValid(user,password)) {
+			int log = userlist.indexOf(user);
+			Board.setLog(log);
+			System.out.println("로그인이 완료되었습니다.");
+		}
+	}
+
+	private boolean isValid(User user, String password) {
+		if (user.getPassword().equals(password)) {
+			return true;
+		}
+		return false;
+	}
+
+	private User findUserById(String id) {
+		User user = null;
+		for (int i = 0; i < userlist.size(); i++) {
+			if (id.equals(userlist.get(i).getId())) {
+				user = userlist.get(i);
+				return user;
+			}
+		}
+		return null;
 	}
 
 	@Override
 	public void logout() {
-		// TODO Auto-generated method stub
-		
+		Board.setLog(-1);
+		System.out.println("로그아웃이 완료 되었습니다.");
 	}
 
 	public void modifyUser() {
-		// TODO Auto-generated method stub
 		
 	}
 	

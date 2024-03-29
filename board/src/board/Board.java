@@ -40,6 +40,10 @@ public class Board {
 		return userlist;
 	}
 	
+	public static ArrayList<HashMap<String, Post>> getBoard() {
+		return board;
+	}
+	
 	public static int getLog() {
 		return log;
 	}
@@ -49,7 +53,9 @@ public class Board {
 
 	public void run() {
 		while (true) {
+			System.out.println(log);
 			printMenu();
+			
 			int select = inputNumber("menu");
 			runMenu(select);
 		}

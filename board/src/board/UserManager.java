@@ -98,7 +98,15 @@ public class UserManager implements UserMethod{
 	}
 
 	public void modifyUser() {
-		
+		User user = userlist.get(Board.getLog());
+		String password = inputString("password");
+		if (isValid(user, password)) {
+			String newPassword = inputString("new password");
+			user.setPassword(newPassword);
+			System.out.println("비밀번호 변경이 완료 되었습니다.");
+		}else {
+			System.out.println("비밀번호가 일치하지 않습니다.");
+		}
 	}
 	
 }

@@ -20,7 +20,7 @@ public class Board {
 	private final int USER = 1;
 	private final int POST = 2;
 
-	private int log;
+	private static int log = -1;
 
 	private UserManager userManager;
 	private PostManager postManager;
@@ -34,6 +34,17 @@ public class Board {
 		userlist = new ArrayList<User>();
 		userManager = new UserManager();
 		postManager = new PostManager();
+	}
+	
+	public static ArrayList<User> getUserlist() {
+		return userlist;
+	}
+	
+	public static int getLog() {
+		return log;
+	}
+	public static void setLog(int log) {
+		Board.log = log;
 	}
 
 	public void run() {

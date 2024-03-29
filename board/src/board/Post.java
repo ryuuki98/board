@@ -3,7 +3,6 @@ package board;
 public class Post {
 	
 	private int number;
-	
 	private int pageNumber;
 	private String id;
 	private String title;

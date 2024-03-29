@@ -99,7 +99,7 @@ public class UserManager implements UserMethod {
 		System.out.println("로그아웃이 완료 되었습니다.");
 	}
 
-	public void modifyUser() {
+	public void updatePassword() {
 		User user = userlist.get(Board.getLog());
 		String password = inputString("password");
 		if (isValid(user, password)) {

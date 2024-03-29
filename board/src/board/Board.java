@@ -10,7 +10,7 @@ public class Board {
 	private final int DELETE_USER = 2;
 	private final int LOGIN = 3;
 	private final int LOGOUT = 4;
-	private final int MODIFY_USER = 5;
+	private final int UPDATE_PASSWORD = 5;
 
 	private final int POSTING = 1;
 	private final int READ_POST = 2;
@@ -105,8 +105,8 @@ public class Board {
 			userManager.login();
 		} else if (option == LOGOUT && isLogin()) {
 			userManager.logout();
-		} else if (option == MODIFY_USER && isLogin()) {
-			userManager.modifyUser();
+		} else if (option == UPDATE_PASSWORD && isLogin()) {
+			userManager.updatePassword();
 		}
 	}
 

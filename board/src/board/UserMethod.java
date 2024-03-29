@@ -5,6 +5,6 @@ public interface UserMethod {
 	public void deleteUser();
 	public void login();
 	public void logout();
-	public void modifyUser();
+	public void updatePassword();
 }
 

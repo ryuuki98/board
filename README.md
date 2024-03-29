@@ -22,6 +22,12 @@ UserManager
 - deleteUser()
 - updatePassword()
 
+PostManager
+- posting()
+- readPost()
+- modifyPost()
+- deletePost()
+
 <br>
 
 유저는 회원가입시 아이디와 비밀번호를 입력하여 가입한다.<br>

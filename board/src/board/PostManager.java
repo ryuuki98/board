@@ -1,34 +1,29 @@
 package board;
 
-public class UserManager implements UserMethod{
+public class PostManager implements PostMethod{
 
 	@Override
-	public void join() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteUser() {
+	public void posting() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void login() {
+	public void readPost() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void logout() {
+	public void modifyPost() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void modifyUser() {
+	@Override
+	public void deletePost() {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 }

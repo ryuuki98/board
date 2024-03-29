@@ -6,21 +6,79 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Board {
+	private final int JOIN = 1;
+	private final int DELETE_USER = 2;
+	private final int LOGIN = 3;
+	private final int LOGOUT = 4;
+	private final int MODIFY_USER = 5;
+
+	private final int POSTING = 1;
+	private final int READ_POST = 2;
+	private final int MODIFY_POST = 3;
+	private final int DELETE_POST = 4;
+
+	private final int USER = 1;
+	private final int POST = 2;
+
 	private int log;
 
 	private UserManager userManager;
+	private PostManager postManager;
 
-	private ArrayList<HashMap<String, Text>> board;
+	private static ArrayList<User> userlist;
+
+	private static ArrayList<HashMap<String, Post>> board;
 
 	public Board() {
-		board = new ArrayList<HashMap<String, Text>>();
+		board = new ArrayList<HashMap<String, Post>>();
+		userlist = new ArrayList<User>();
 		userManager = new UserManager();
+		postManager = new PostManager();
 	}
 
 	public void run() {
 		while (true) {
 			printMenu();
 			int select = inputNumber("menu");
+			runMenu(select);
+		}
+	}
+
+	private void runMenu(int select) {
+		if (select == USER) {
+			printUserSubmenu();
+			int option = inputNumber("menu");
+			runUserSubmenu(option);
+		} else if (select == POST) {
+			printPostSubmenu();
+			int option = inputNumber("menu");
+			runPostSubmenu(option);
+		}
+	}
+
+	private void runPostSubmenu(int option) {
+		if (option == POSTING) {
+			postManager.posting();
+		} else if (option == READ_POST) {
+			postManager.readPost();
+		} else if (option == MODIFY_POST) {
+			postManager.modifyPost();
+		} else if (option == DELETE_POST) {
+			postManager.deletePost();
+		}
+	}
+
+	private void runUserSubmenu(int option) {
+		if (option == JOIN) {
+			userManager.join();
+		} else if (option == DELETE_USER) {
+			userManager.deleteUser();
+		} else if (option == LOGIN) {
+			userManager.login();
+		} else if (option == LOGOUT) {
+			userManager.logout();
+		} else if (option == MODIFY_USER) {
+			userManager.modifyUser();
 		}
 	}
 
@@ -38,14 +96,24 @@ public class Board {
 	}
 
 	private void printMenu() {
+		System.out.println("유저게시판");
+		System.out.println("1.회원 메뉴");
+		System.out.println("2.게시글 메뉴");
+	}
+
+	private void printPostSubmenu() {
+		System.out.println("1.글쓰기");
+		System.out.println("2.조회");
+		System.out.println("3.수정");
+		System.out.println("4.글 삭제");
+	}
+
+	private void printUserSubmenu() {
 		System.out.println("1.회원가입");
 		System.out.println("2.회원탈퇴");
 		System.out.println("3.로그인");
 		System.out.println("4.로그아웃");
-		System.out.println("5.글쓰기");
-		System.out.println("6.조회");
-		System.out.println("7.수정");
-		System.out.println("8.글 삭제");
+		System.out.println("5.회원정보 변경");
 	}
 
 }

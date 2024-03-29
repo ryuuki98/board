@@ -1,6 +1,6 @@
 package board;
 
-public class Text {
+public class Post {
 	private int number;
 	private String id;
 	private String title;

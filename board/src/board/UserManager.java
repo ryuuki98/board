@@ -1,9 +1,10 @@
 package board;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class UserManager implements UserMethod{
+public class UserManager implements UserMethod {
 
 	private ArrayList<User> userlist = Board.getUserlist();
 	
@@ -40,7 +41,7 @@ public class UserManager implements UserMethod{
 
 	private String inputString(String message) {
 		System.out.println(message + " : ");
-		
+
 		return new Scanner(System.in).next();
 	}
 
@@ -49,10 +50,11 @@ public class UserManager implements UserMethod{
 		User user = userlist.get(Board.getLog());
 		String password = inputString("password");
 		if (isValid(user, password)) {
+			Board.getPostManager().deletePostAll(user.getId());
 			userlist.remove(user);
 			Board.setLog(-1);
 			System.out.println("탈퇴가 완료 되었습니다.");
-		}else {
+		} else {
 			System.out.println("비밀번호를 확인해주세요.");
 		}
 	}
@@ -66,7 +68,7 @@ public class UserManager implements UserMethod{
 			return;
 		}
 		String password = inputString("password");
-		if (isValid(user,password)) {
+		if (isValid(user, password)) {
 			int log = userlist.indexOf(user);
 			Board.setLog(log);
 			System.out.println("로그인이 완료되었습니다.");
@@ -104,9 +106,9 @@ public class UserManager implements UserMethod{
 			String newPassword = inputString("new password");
 			user.setPassword(newPassword);
 			System.out.println("비밀번호 변경이 완료 되었습니다.");
-		}else {
+		} else {
 			System.out.println("비밀번호가 일치하지 않습니다.");
 		}
 	}
-	
+
 }

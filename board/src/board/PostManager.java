@@ -2,6 +2,7 @@ package board;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -58,6 +59,7 @@ public class PostManager implements PostMethod {
 	}
 
 	private void printPage(int currentPageNumber) {
+		System.out.println("===========================");
 		for (int i = 0; i < board.size(); i++) {
 			HashMap<String, Post> posting = board.get(i);
 			for (Post post : posting.values()) {
@@ -66,6 +68,8 @@ public class PostManager implements PostMethod {
 				}
 			}
 		}
+		System.out.println("===========================");
+
 	}
 
 	@Override
@@ -81,6 +85,7 @@ public class PostManager implements PostMethod {
 	}
 
 	private void printUserPostAll(User user) {
+		System.out.println("===========================");
 		for (int i = 0; i < board.size(); i++) {
 			HashMap<String, Post> posting = board.get(i);
 			Post post = posting.get(user.getId());
@@ -88,6 +93,7 @@ public class PostManager implements PostMethod {
 				System.out.println(i + ") " + post.getTitle());
 			}
 		}
+		System.out.println("===========================");
 	}
 
 	@Override
@@ -104,6 +110,19 @@ public class PostManager implements PostMethod {
 			for (Post post : board.get(i).values())
 				post.setNumber(i);
 		}
+	}
+
+	public void deletePostAll(String id) {
+		for (int i = 0; i < board.size(); i++) {
+			HashMap<String, Post> posting = board.get(i);
+			for (Post post : posting.values()) {
+				if (post.getId().equals(id)) {
+					board.remove(i);
+					i--;
+				}
+			}
+		}
+		updateNumber();
 	}
 
 }

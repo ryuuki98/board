@@ -23,6 +23,9 @@ public class Post {
 	public int getPageNumber() {
 		return pageNumber;
 	}
+	public String getId() {
+		return id;
+	}
 	
 	public String getTitle() {
 		return title;

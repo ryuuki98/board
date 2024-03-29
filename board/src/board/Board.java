@@ -22,8 +22,8 @@ public class Board {
 
 	private static int log = -1;
 
-	private UserManager userManager;
-	private PostManager postManager;
+	private static UserManager userManager;
+	private static PostManager postManager;
 
 	private static ArrayList<User> userlist;
 
@@ -38,6 +38,9 @@ public class Board {
 
 	public static ArrayList<User> getUserlist() {
 		return userlist;
+	}
+	public static PostManager getPostManager() {
+		return postManager;
 	}
 
 	public static ArrayList<HashMap<String, Post>> getBoard() {
@@ -129,9 +132,15 @@ public class Board {
 	}
 
 	private void printMenu() {
+		System.out.println("===========================");
+		System.out.println("현재 로그인 : " + (log == -1 ? "none" : userlist.get(log).getId()));
+		System.out.println("===========================");
 		System.out.println("유저게시판");
+		System.out.println("===========================");
 		System.out.println("1.회원 메뉴");
 		System.out.println("2.게시글 메뉴");
+		System.out.println("===========================");
+
 	}
 
 	private void printPostSubmenu() {

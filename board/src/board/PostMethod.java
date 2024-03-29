@@ -1,8 +1,8 @@
 package board;
 
 public interface PostMethod {
-	public void posting();
+	public void posting(User user);
 	public void readPost();
-	public void modifyPost();
-	public void deletePost();
+	public void modifyPost(User user);
+	public void deletePost(User user);
 }

@@ -66,22 +66,31 @@ public class Board {
 			printUserSubmenu();
 			int option = inputNumber("menu");
 			runUserSubmenu(option);
-		} else if (select == POST) {
+		} else if (select == POST && isLogin()) {
 			printPostSubmenu();
 			int option = inputNumber("menu");
 			runPostSubmenu(option);
 		}
 	}
 
+	private boolean isLogin() {
+		if (log == -1) {
+			System.out.println("로그인 후 이용하세요");
+			return false;
+		}
+		return true;
+	}
+
 	private void runPostSubmenu(int option) {
+		User user = userlist.get(log);
 		if (option == POSTING) {
-			postManager.posting();
+			postManager.posting(user);
 		} else if (option == READ_POST) {
 			postManager.readPost();
 		} else if (option == MODIFY_POST) {
-			postManager.modifyPost();
+			postManager.modifyPost(user);
 		} else if (option == DELETE_POST) {
-			postManager.deletePost();
+			postManager.deletePost(user);
 		}
 	}
 
